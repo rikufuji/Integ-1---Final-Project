@@ -1,0 +1,104 @@
+[
+  {
+    "timestamp": "2026-05-20T11:21:30.596Z",
+    "type": "auth",
+    "detail": "New user registered: daniela",
+    "ref": "user1"
+  },
+  {
+    "timestamp": "2026-05-20T11:21:35.607Z",
+    "type": "auth",
+    "detail": "User daniela logged in",
+    "ref": "user1"
+  },
+  {
+    "timestamp": "2026-05-20T11:28:04.631Z",
+    "type": "auth",
+    "detail": "User admin logged in",
+    "ref": "admin1"
+  },
+  {
+    "timestamp": "2026-05-20T11:29:12.194Z",
+    "type": "auth",
+    "detail": "User daniela logged in",
+    "ref": "user1"
+  },
+  {
+    "timestamp": "2026-05-20T11:29:36.916Z",
+    "type": "reservation",
+    "detail": "Daniela reserved Room 101",
+    "ref": "e5297efb-9887-4523-9d07-3d67db8f629f"
+  },
+  {
+    "timestamp": "2026-05-20T11:29:48.746Z",
+    "type": "auth",
+    "detail": "User admin logged in",
+    "ref": "admin1"
+  },
+  {
+    "timestamp": "2026-05-20T11:30:03.196Z",
+    "type": "reservation",
+    "detail": "Reservation e5297efb-9887-4523-9d07-3d67db8f629f approved — Room 101 assigned to Daniela",
+    "ref": "e5297efb-9887-4523-9d07-3d67db8f629f"
+  },
+  {
+    "timestamp": "2026-05-20T11:30:03.199Z",
+    "type": "payment",
+    "detail": "Down payment ₱1200 from Daniela auto-approved via reservation",
+    "ref": "p001"
+  },
+  {
+    "timestamp": "2026-05-20T11:48:25.445Z",
+    "type": "auth",
+    "detail": "User daniela logged in",
+    "ref": "user1"
+  },
+  {
+    "timestamp": "2026-05-20T11:49:00.256Z",
+    "type": "payment",
+    "detail": "Payment submitted by Daniela — ₱1200",
+    "ref": "p002"
+  },
+  {
+    "timestamp": "2026-05-20T11:49:55.937Z",
+    "type": "auth",
+    "detail": "New user registered: mico",
+    "ref": "user2"
+  },
+  {
+    "timestamp": "2026-05-20T11:50:02.240Z",
+    "type": "auth",
+    "detail": "User mico logged in",
+    "ref": "user2"
+  },
+  {
+    "timestamp": "2026-05-20T11:50:23.949Z",
+    "type": "reservation",
+    "detail": "Mico Jabagat reserved Room 101 (Reservation #1)",
+    "ref": "c24edf90-dd96-45de-ab24-71400447635c"
+  },
+  {
+    "timestamp": "2026-05-20T11:50:35.714Z",
+    "type": "auth",
+    "detail": "User admin logged in",
+    "ref": "admin1"
+  },
+  {
+    "timestamp": "2026-05-20T11:50:57.058Z",
+    "type": "reservation",
+    "detail": "Reservation #1 approved — Room 101 assigned to Mico Jabagat",
+    "ref": "c24edf90-dd96-45de-ab24-71400447635c"
+  },
+  {
+    "timestamp": "2026-05-20T11:50:57.067Z",
+    "type": "payment",
+    "detail": "Down payment ₱1200 from Mico Jabagat auto-approved via reservation",
+    "ref": "p003"
+  },
+  {
+    "timestamp": "2026-05-20T11:51:05.541Z",
+    "type": "payment",
+    "detail": "Payment p002 approved by admin",
+    "ref": "p002"
+  }
+]

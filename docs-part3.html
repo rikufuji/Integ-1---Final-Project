@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BoardEase — Part 3: Technical Explanation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#1e2340;line-height:1.7}
+  .doc{max-width:900px;margin:0 auto;padding:60px 48px}
+  .part-header{background:linear-gradient(135deg,#1d4ed8,#3b4fa8);border-radius:16px;padding:32px 36px;margin-bottom:48px;color:#fff}
+  .part-header h1{font-size:32px;font-weight:900;margin-bottom:6px}
+  .part-header p{font-size:15px;opacity:0.85}
+  .section-num{display:inline-block;background:#3b4fa8;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+  h2.section-title{font-size:28px;font-weight:800;color:#1e2340;margin-bottom:8px;padding-bottom:12px;border-bottom:3px solid #3b4fa8}
+  h3.sub-title{font-size:18px;font-weight:700;color:#3b4fa8;margin:28px 0 12px}
+  h4.sub-sub{font-size:15px;font-weight:700;color:#1e2340;margin:20px 0 8px}
+  p{margin-bottom:14px;font-size:15px;color:#374151}
+  ul,ol{margin:0 0 14px 24px}
+  li{font-size:15px;color:#374151;margin-bottom:6px}
+  .page-break{page-break-after:always}
+
+  .info-box{background:#eff6ff;border-left:4px solid #3b4fa8;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .info-box p{margin:0;font-size:14px;color:#1e40af}
+  .warn-box{background:#fef3c7;border-left:4px solid #f59e0b;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .warn-box p{margin:0;font-size:14px;color:#92400e}
+  .success-box{background:#dcfce7;border-left:4px solid #22c55e;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .success-box p{margin:0;font-size:14px;color:#15803d}
+  .danger-box{background:#fee2e2;border-left:4px solid #ef4444;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .danger-box p{margin:0;font-size:14px;color:#b91c1c}
+
+  pre{background:#1e2340;color:#e2e8f0;border-radius:12px;padding:20px 24px;font-size:13px;line-height:1.7;overflow-x:auto;margin:16px 0}
+  code{background:#f1f5f9;color:#3b4fa8;padding:2px 7px;border-radius:4px;font-size:13px;font-family:'Courier New',monospace}
+  pre code{background:none;color:inherit;padding:0}
+  .kw{color:#93c5fd}.fn{color:#86efac}.str{color:#fde68a}.cm{color:#6b7280}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th{background:#3b4fa8;color:#fff;padding:11px 14px;text-align:left;font-weight:600}
+  td{padding:10px 14px;border-bottom:1px solid #e8ecf8;color:#374151}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#f5f7ff}
+
+  .challenge{background:#fff;border:1px solid #e0e7ff;border-radius:12px;padding:20px 24px;margin:16px 0}
+  .challenge-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .challenge-num{width:36px;height:36px;background:#ef4444;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+  .challenge-title{font-size:16px;font-weight:700;color:#1e2340}
+  .challenge-problem{background:#fee2e2;border-radius:8px;padding:12px 16px;margin-bottom:10px;font-size:14px;color:#b91c1c}
+  .challenge-solution{background:#dcfce7;border-radius:8px;padding:12px 16px;font-size:14px;color:#15803d}
+  .challenge-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+
+  .req-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid #f0f4ff}
+  .req-row:last-child{border-bottom:none}
+  .req-check{width:28px;height:28px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px}
+  .req-content h5{font-size:15px;font-weight:700;color:#1e2340;margin-bottom:4px}
+  .req-content p{font-size:14px;color:#6b7280;margin:0}
+
+  @media print{.page-break{page-break-after:always}.doc{padding:40px 32px}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <div class="part-header">
+    <h1>⚙️ Part 3 — Technical Explanation</h1>
+    <p>How each requirement was implemented · Challenges encountered and solutions</p>
+  </div>
+
+  <!-- ══ SECTION 4 ══ -->
+  <div class="section-num">Section 4</div>
+  <h2 class="section-title">Technical Explanation</h2>
+
+  <h3 class="sub-title">4.1 How Each Requirement Was Implemented</h3>
+
+  <!-- Requirements checklist -->
+  <div style="background:#f8faff;border:1px solid #e0e7ff;border-radius:12px;padding:20px 24px;margin:16px 0">
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>XML as Primary Data Store (xmldom)</h5>
+        <p>Payments, messages, logs, and reservations are stored in XML files at <code>backend/data/xml/</code>. All reads use <code>DOMParser</code> and all writes use <code>XMLSerializer</code> from the <code>xmldom</code> library. Users, rooms, and groups use JSON files at <code>backend/data/json/</code>.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>XML Retained and Used for XSLT Reports</h5>
+        <p>The same XML files used for live data (<code>payments.xml</code>, <code>users.xml</code>) are also the input for XSLT stylesheets in the Admin Reports dashboard — no separate sync step needed for most reports.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>XSLT Transformations</h5>
+        <p>Three <code>.xslt</code> stylesheets transform XML to HTML reports and JSON. The <code>xsltModel.js</code> applies them via <code>xslt4node</code> with a DOM-based HTML fallback if the native engine is unavailable.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Real-Time Messaging with Kafka</h5>
+        <p>KafkaJS producer publishes to <code>boardease.messages</code> topic. Consumer reads and broadcasts via Socket.IO. Graceful fallback to direct emit when Kafka is offline.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Payment Event Queue with RabbitMQ</h5>
+        <p><code>amqplib</code> connects to RabbitMQ, asserts a durable <code>boardease.payments</code> queue. Payment submissions publish events; the consumer emits <code>payment_notification</code> to the admin via Socket.IO.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>JWT Authentication</h5>
+        <p>Login returns a signed JWT. The <code>auth.js</code> middleware verifies it on every protected route using <code>jsonwebtoken.verify()</code>. Passwords are hashed with <code>bcryptjs</code> before storage in <code>users.json</code>.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>File Uploads (Multer)</h5>
+        <p>Multer handles multipart form data for payment proofs, room photos (up to 5), GCash QR codes, and profile avatars. Files are stored in <code>backend/uploads/</code> and served as static assets at <code>/uploads/&lt;filename&gt;</code>. Frontend uses a <code>?t=timestamp</code> cache-busting parameter so browsers always fetch the latest uploaded image.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Docker Offline Deployment</h5>
+        <p>All 6 services are containerized. Health checks on Kafka, RabbitMQ, and Redis ensure the backend only starts after its dependencies are ready. Named volumes persist uploads and XML data across restarts.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Mobile Responsive Design</h5>
+        <p>CSS Modules with breakpoints at 768px and 480px. iPhone SE (375px) tested. Viewport meta tag in <code>_document.js</code>. Sidebar becomes a slide-in drawer with hamburger toggle. All inputs use <code>font-size: 16px</code> to prevent iOS zoom.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Activity Logging</h5>
+        <p>Every auth event, payment action, message, and notification is automatically logged to <code>backend/data/json/logs.json</code> via <code>logActivity(type, detail, ref)</code>. Viewable in the Admin Reports → Activity Logs tab.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Public Landing Page &amp; Tenant Self-Registration</h5>
+        <p>The root route (<code>/</code>) serves an animated public landing page with live room stats. New tenants can self-register at <code>/register</code> without admin involvement, defaulting to the <code>tenant</code> role.</p>
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-check">✅</div>
+      <div class="req-content">
+        <h5>Profile Pages with Avatar Upload &amp; Password Change</h5>
+        <p>Both admin (<code>/admin/profile</code>) and tenant (<code>/user/profile</code>) have dedicated profile pages supporting personal detail editing, avatar upload via Multer, and password change with current password verification.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="sub-title page-break">4.2 API Routes Reference</h3>
+  <table>
+    <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th><th>Auth</th></tr></thead>
+    <tbody>
+      <tr><td>POST</td><td>/api/auth/login</td><td>Login, returns JWT</td><td>No</td></tr>
+      <tr><td>POST</td><td>/api/auth/register</td><td>Register new user</td><td>No</td></tr>
+      <tr><td>GET</td><td>/api/users/profile</td><td>Get current user profile</td><td>Yes</td></tr>
+      <tr><td>PUT</td><td>/api/users/profile</td><td>Update profile + avatar</td><td>Yes</td></tr>
+      <tr><td>GET</td><td>/api/users/tenants</td><td>List all tenants (admin)</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/rooms</td><td>List all rooms</td><td>Yes</td></tr>
+      <tr><td>POST</td><td>/api/rooms</td><td>Add new room</td><td>Admin</td></tr>
+      <tr><td>PUT</td><td>/api/rooms/:id</td><td>Edit room details</td><td>Admin</td></tr>
+      <tr><td>POST</td><td>/api/rooms/:id/assign</td><td>Assign tenant to room</td><td>Admin</td></tr>
+      <tr><td>POST</td><td>/api/rooms/:id/unassign</td><td>Remove tenant from room</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/payments</td><td>List payments</td><td>Yes</td></tr>
+      <tr><td>POST</td><td>/api/payments</td><td>Submit payment request</td><td>Yes</td></tr>
+      <tr><td>PUT</td><td>/api/payments/:id/approve</td><td>Approve payment</td><td>Admin</td></tr>
+      <tr><td>PUT</td><td>/api/payments/:id/deny</td><td>Deny payment with reason</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/messages</td><td>Get messages by room</td><td>Yes</td></tr>
+      <tr><td>GET</td><td>/api/reservations</td><td>List reservations</td><td>Yes</td></tr>
+      <tr><td>POST</td><td>/api/reservations</td><td>Submit reservation</td><td>Yes</td></tr>
+      <tr><td>PUT</td><td>/api/reservations/:id/approve</td><td>Approve reservation</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/xml/payments/html</td><td>XSLT → HTML report</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/xml/payments/json</td><td>XSLT → JSON report</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/xml/users/html</td><td>XSLT → Tenant directory</td><td>Admin</td></tr>
+      <tr><td>GET</td><td>/api/xml/logs</td><td>Activity logs from XML</td><td>Admin</td></tr>
+      <tr><td>GET/PUT</td><td>/api/settings</td><td>GCash/bank payment info</td><td>Admin</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4.3 Challenges -->
+  <h3 class="sub-title">4.3 Challenges Encountered and Solutions</h3>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">1</div>
+      <div class="challenge-title">Kafka Not Available in Local Dev</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      Running Kafka locally requires Zookeeper + Kafka broker setup. During development without Docker, the backend crashed when Kafka was unreachable.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      Wrapped <code>initKafka()</code> in a try-catch. Set <code>kafkaReady = false</code> on failure. In <code>publishMessage()</code>, if <code>kafkaReady</code> is false, return <code>false</code> and let the caller fall back to direct <code>io.emit()</code>. The app works identically with or without Kafka.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">2</div>
+      <div class="challenge-title">XML Too Complex for User Data Storage</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      Storing user accounts in XML caused significant friction. Auth operations like login require looking up a user by username and comparing a bcrypt hash — but with <code>xmldom</code>, this means parsing the entire XML document, iterating child nodes, and extracting text values manually for every field. Updating a user (e.g. changing avatar, password, or profile details) required finding the node by ID, then individually removing and replacing each child element. The verbosity made the auth and profile code error-prone and hard to maintain. Hashed passwords and avatar filenames also contained characters (<code>$</code>, <code>.</code>, <code>/</code>) that required CDATA wrapping to avoid breaking the XML structure.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      Migrated users (and rooms, groups) to JSON files. <code>JSON.parse</code> returns a plain JavaScript array — login becomes a simple <code>.find()</code>, updates become a <code>spread</code> merge, and no character escaping is needed. XML is kept for payments, messages, logs, and reservations where the XSLT report pipeline directly consumes the same files.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">3</div>
+      <div class="challenge-title">Browser Caching Stale Uploaded Images</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      After uploading a new profile photo or QR code, the browser continued showing the old image because it cached the previous response for the same URL path.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      Added a <code>?t=timestamp</code> cache-busting query parameter to all upload image <code>src</code> attributes. A React state variable <code>avatarTs</code> / <code>qrTs</code> is updated to <code>Date.now()</code> after each successful upload, forcing the browser to fetch the new image.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">3</div>
+      <div class="challenge-title">XSLT Engine Unavailable on Some Environments</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      <code>xslt4node</code> requires native Java bindings which may not be available in all Node.js environments, causing the Reports page to fail entirely.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      <code>xsltModel.js</code> wraps the <code>require('xslt4node')</code> in a try-catch. If unavailable, it falls back to a pure JavaScript DOM-based HTML table builder using the same <code>xmldom</code> parser — producing visually identical output.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">4</div>
+      <div class="challenge-title">Mobile Layout Breaking on iPhone SE (375px)</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      The app was not scaling correctly on mobile — content was overflowing, the sidebar was not accessible, and iOS was auto-zooming on input focus.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      Created <code>_document.js</code> with the viewport meta tag (<code>width=device-width, initial-scale=1</code>). Set all inputs to <code>font-size: 16px</code> to prevent iOS zoom. Replaced fixed sidebar with a slide-in drawer triggered by a hamburger button in a fixed mobile topbar.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">5</div>
+      <div class="challenge-title">Kafka Broker URL Difference: Local vs Docker</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      Locally, Kafka is at <code>localhost:9092</code>. Inside Docker, the backend container must reach Kafka at <code>kafka:9092</code> (service name). Using the wrong URL caused connection failures.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      The <code>KAFKA_BROKER</code> environment variable is set to <code>localhost:9092</code> in <code>.env</code> for local dev, and overridden to <code>kafka:9092</code> in <code>docker-compose.yml</code> for the containerized backend service.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">6</div>
+      <div class="challenge-title">Docker Service Startup Order</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      The backend started before Kafka and RabbitMQ were ready, causing connection errors on first boot.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      Added <code>healthcheck</code> blocks to Kafka, RabbitMQ, and Redis services. The backend service uses <code>depends_on: condition: service_healthy</code> so it only starts after all brokers pass their health checks.
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="challenge-header">
+      <div class="challenge-num">7</div>
+      <div class="challenge-title">Inline Styles Overriding Responsive CSS</div>
+    </div>
+    <div class="challenge-problem">
+      <div class="challenge-label">🔴 Problem</div>
+      Many dashboard pages used hardcoded inline styles like <code>padding: "28px 32px"</code> and <code>gridTemplateColumns: "1fr 420px"</code> which could not be overridden by media queries.
+    </div>
+    <div class="challenge-solution">
+      <div class="challenge-label">✅ Solution</div>
+      Replaced fixed inline padding with smaller values (<code>16px</code>) that work on all screen sizes. Replaced fixed grid columns with <code>repeat(auto-fit, minmax(min(100%, 300px), 1fr))</code> which naturally stacks on small screens.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

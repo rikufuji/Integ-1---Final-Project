@@ -1,0 +1,44 @@
+[
+  {
+    "id": "p001",
+    "tenantId": "user1",
+    "tenantName": "Daniela",
+    "roomNumber": "101",
+    "amount": "1200",
+    "date": "2026-05-20",
+    "method": "GCash",
+    "status": "approved",
+    "message": "First month rent via reservation down payment",
+    "denialReason": "",
+    "proofImage": "resv-1779276576910.jpg",
+    "createdAt": "2026-05-20T11:30:03.197Z"
+  },
+  {
+    "id": "p002",
+    "tenantId": "user1",
+    "tenantName": "Daniela",
+    "roomNumber": "101",
+    "amount": "1200",
+    "date": "2026-05-20",
+    "method": "GCash",
+    "status": "approved",
+    "message": "",
+    "denialReason": "",
+    "proofImage": "proof-1779277740233.jpg",
+    "createdAt": "2026-05-20T11:49:00.253Z"
+  },
+  {
+    "id": "p003",
+    "tenantId": "user2",
+    "tenantName": "Mico Jabagat",
+    "roomNumber": "101",
+    "amount": "1200",
+    "date": "2026-05-20",
+    "method": "GCash",
+    "status": "approved",
+    "message": "First month rent via reservation down payment",
+    "denialReason": "",
+    "proofImage": "resv-1779277823934.jpg",
+    "createdAt": "2026-05-20T11:50:57.064Z"
+  }
+]

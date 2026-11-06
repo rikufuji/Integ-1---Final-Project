@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BoardEase — Part 2: Feature Descriptions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#1e2340;line-height:1.7}
+  .doc{max-width:900px;margin:0 auto;padding:60px 48px}
+  .part-header{background:linear-gradient(135deg,#3b4fa8,#6c7fe8);border-radius:16px;padding:32px 36px;margin-bottom:48px;color:#fff}
+  .part-header h1{font-size:32px;font-weight:900;margin-bottom:6px}
+  .part-header p{font-size:15px;opacity:0.85}
+  .section-num{display:inline-block;background:#3b4fa8;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+  h2.section-title{font-size:28px;font-weight:800;color:#1e2340;margin-bottom:8px;padding-bottom:12px;border-bottom:3px solid #3b4fa8}
+  h3.sub-title{font-size:18px;font-weight:700;color:#3b4fa8;margin:28px 0 12px}
+  h4.sub-sub{font-size:15px;font-weight:700;color:#1e2340;margin:20px 0 8px}
+  p{margin-bottom:14px;font-size:15px;color:#374151}
+  ul,ol{margin:0 0 14px 24px}
+  li{font-size:15px;color:#374151;margin-bottom:6px}
+  .page-break{page-break-after:always}
+
+  .info-box{background:#eff6ff;border-left:4px solid #3b4fa8;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .info-box p{margin:0;font-size:14px;color:#1e40af}
+  .warn-box{background:#fef3c7;border-left:4px solid #f59e0b;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .warn-box p{margin:0;font-size:14px;color:#92400e}
+  .success-box{background:#dcfce7;border-left:4px solid #22c55e;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .success-box p{margin:0;font-size:14px;color:#15803d}
+
+  pre{background:#1e2340;color:#e2e8f0;border-radius:12px;padding:20px 24px;font-size:13px;line-height:1.7;overflow-x:auto;margin:16px 0}
+  code{background:#f1f5f9;color:#3b4fa8;padding:2px 7px;border-radius:4px;font-size:13px;font-family:'Courier New',monospace}
+  pre code{background:none;color:inherit;padding:0}
+
+  .kw{color:#93c5fd}
+  .fn{color:#86efac}
+  .str{color:#fde68a}
+  .cm{color:#6b7280}
+  .tag{color:#f9a8d4}
+  .attr{color:#93c5fd}
+  .val{color:#fde68a}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th{background:#3b4fa8;color:#fff;padding:11px 14px;text-align:left;font-weight:600}
+  td{padding:10px 14px;border-bottom:1px solid #e8ecf8;color:#374151}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#f5f7ff}
+
+  .feature-card{background:#f8faff;border:1px solid #e0e7ff;border-radius:12px;padding:20px 24px;margin:16px 0}
+  .feature-card h4{font-size:15px;font-weight:700;color:#1e2340;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .feature-card p{font-size:14px;color:#6b7280;margin:0}
+
+  .xml-tree{background:#1e2340;border-radius:12px;padding:20px 24px;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;overflow-x:auto;margin:16px 0}
+
+  @media print{.page-break{page-break-after:always}.doc{padding:40px 32px}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <div class="part-header">
+    <h1>📋 Part 2 — Feature Descriptions</h1>
+    <p>Messaging System · JSON Data Store · Parsing Method · XSLT Transformations · Scripting Integration</p>
+  </div>
+
+  <!-- ══ SECTION 3 ══ -->
+  <div class="section-num">Section 3</div>
+  <h2 class="section-title">Feature Descriptions</h2>
+
+  <!-- 3.1 Messaging -->
+  <h3 class="sub-title">3.1 Real-Time Messaging System</h3>
+  <p>
+    BoardEase implements a full real-time messaging system using <strong>Socket.IO</strong>
+    as the WebSocket layer and <strong>Apache Kafka</strong> as the message broker.
+    Messages are delivered instantly to all connected clients in the same chat room.
+  </p>
+
+  <h4 class="sub-sub">Chat Rooms Available</h4>
+  <table>
+    <thead><tr><th>Room ID</th><th>Name</th><th>Access</th></tr></thead>
+    <tbody>
+      <tr><td><code>general</code></td><td>BoardEase GC</td><td>All users — general group chat</td></tr>
+      <tr><td><code>admin</code></td><td>Tenant Messages / Admin</td><td>Direct channel between tenants and admin</td></tr>
+      <tr><td><code>{uuid}</code></td><td>Custom Groups</td><td>Admin-created groups with selected members</td></tr>
+    </tbody>
+  </table>
+
+  <h4 class="sub-sub">Kafka Integration Flow</h4>
+  <pre><code><span class="cm">// backend/lib/kafka.js — simplified</span>
+<span class="kw">async function</span> <span class="fn">initKafka</span>(io) {
+  <span class="kw">await</span> producer.connect();
+  <span class="kw">await</span> consumer.subscribe({ topic: <span class="str">'boardease.messages'</span> });
+  <span class="kw">await</span> consumer.run({
+    eachMessage: <span class="kw">async</span> ({ message }) => {
+      <span class="kw">const</span> data = JSON.parse(message.value.toString());
+      io.to(data.room).emit(<span class="str">'receive_message'</span>, data); <span class="cm">// broadcast</span>
+    }
+  });
+}
+
+<span class="kw">async function</span> <span class="fn">publishMessage</span>(data) {
+  <span class="kw">if</span> (!kafkaReady) <span class="kw">return false</span>; <span class="cm">// fallback to direct emit</span>
+  <span class="kw">await</span> producer.send({
+    topic: <span class="str">'boardease.messages'</span>,
+    messages: [{ value: JSON.stringify(data) }]
+  });
+  <span class="kw">return true</span>;
+}</code></pre>
+
+  <div class="success-box">
+    <p>✅ <strong>Graceful Fallback:</strong> If Kafka is not available (e.g., during local dev without Docker), the system automatically falls back to direct Socket.IO emit — the app never crashes.</p>
+  </div>
+
+  <h4 class="sub-sub">Supported Message Features</h4>
+  <ul>
+    <li>Text messages with timestamps</li>
+    <li>Image sharing (base64 encoded, displayed inline)</li>
+    <li>Image lightbox viewer on click</li>
+    <li>Admin rent reminder broadcast to all tenants</li>
+    <li>Group creation with custom member selection</li>
+    <li>All messages persisted to <code>messages.json</code></li>
+  </ul>
+
+  <h3 class="sub-title page-break">3.2 Data Store — XML and JSON</h3>
+  <p>
+    BoardEase uses a <strong>hybrid data store</strong>: XML files (via <code>xmldom</code>) for payments,
+    messages, logs, and reservations; and JSON files for users, rooms, and groups.
+    All files live inside the project at <code>backend/data/</code>.
+  </p>
+
+  <table>
+    <thead><tr><th>File</th><th>Format</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>users.json</code></td><td>JSON</td><td>All user accounts (admin + tenants)</td></tr>
+      <tr><td><code>rooms.json</code></td><td>JSON</td><td>Room listings, status, tenant assignments</td></tr>
+      <tr><td><code>groups.json</code></td><td>JSON</td><td>Custom chat group definitions</td></tr>
+      <tr><td><code>payments.xml</code></td><td>XML</td><td>Payment requests and approval status</td></tr>
+      <tr><td><code>messages.xml</code></td><td>XML</td><td>Persisted chat messages</td></tr>
+      <tr><td><code>reservations.xml</code></td><td>XML</td><td>Room reservation requests</td></tr>
+      <tr><td><code>logs.xml</code></td><td>XML</td><td>Activity audit trail</td></tr>
+      <tr><td><code>settings.json</code></td><td>JSON</td><td>GCash/bank payment info, QR code filename</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <p>📌 <strong>Why XML for most data?</strong> XML is the primary store because it integrates directly with the XSLT report pipeline — the same <code>payments.xml</code> and <code>users.xml</code> files read by the app are also transformed by XSLT stylesheets for the Admin Reports dashboard. JSON is used for users, rooms, and groups where XSLT reporting is not needed.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>users.json</code></td><td>All user accounts (admin + tenants)</td></tr>
+      <tr><td><code>rooms.json</code></td><td>Room listings, status, tenant assignments</td></tr>
+      <tr><td><code>payments.json</code></td><td>Payment requests and approval status</td></tr>
+      <tr><td><code>messages.json</code></td><td>Persisted chat messages</td></tr>
+      <tr><td><code>reservations.json</code></td><td>Room reservation requests</td></tr>
+      <tr><td><code>groups.json</code></td><td>Custom chat group definitions</td></tr>
+      <tr><td><code>logs.json</code></td><td>Activity audit trail</td></tr>
+      <tr><td><code>../settings.json</code></td><td>GCash/bank payment info, QR code filename</td></tr>
+    </tbody>
+  </table>
+
+  <h4 class="sub-sub">Sample — payments.json structure</h4>
+  <pre><code>[{
+  <span class="str">"id"</span>: <span class="str">"p001"</span>,
+  <span class="str">"tenantName"</span>: <span class="str">"Chona Marie"</span>,
+  <span class="str">"roomNumber"</span>: <span class="str">"101"</span>,
+  <span class="str">"amount"</span>: <span class="str">"1200"</span>,
+  <span class="str">"date"</span>: <span class="str">"2026-05-05"</span>,
+  <span class="str">"method"</span>: <span class="str">"GCash"</span>,
+  <span class="str">"status"</span>: <span class="str">"approved"</span>,
+  <span class="str">"denialReason"</span>: <span class="str">""</span>,
+  <span class="str">"createdAt"</span>: <span class="str">"2026-05-05T08:00:00.000Z"</span>
+}]</code></pre>
+
+  <!-- 3.3 Parsing Method -->
+  <h3 class="sub-title">3.3 Data Access Method — xmldom + JSON File I/O</h3>
+  <p>
+    XML files are read and written using the <code>xmldom</code> library's <code>DOMParser</code> and
+    <code>XMLSerializer</code>. JSON files use Node.js built-in <code>fs</code> with <code>JSON.parse</code>
+    / <code>JSON.stringify</code>. Both live in <code>backend/data/</code>.
+  </p>
+
+  <h4 class="sub-sub">XML Read/Write Pattern (payments, messages, logs, reservations)</h4>
+  <pre><code><span class="cm">// backend/models/xmlModel.js</span>
+<span class="kw">function</span> <span class="fn">readXML</span>(file) {
+  <span class="kw">const</span> raw = fs.readFileSync(path.join(XML_DIR, file), <span class="str">'utf-8'</span>);
+  <span class="kw">return new</span> DOMParser().parseFromString(raw, <span class="str">'text/xml'</span>);
+}
+
+<span class="kw">function</span> <span class="fn">writeXML</span>(file, doc) {
+  fs.writeFileSync(path.join(XML_DIR, file), <span class="kw">new</span> XMLSerializer().serializeToString(doc), <span class="str">'utf-8'</span>);
+}</code></pre>
+
+  <h4 class="sub-sub">JSON Read/Write Pattern (users, rooms, groups)</h4>
+  <pre><code><span class="cm">// backend/models/xmlModel.js</span>
+<span class="kw">function</span> <span class="fn">read</span>(name) {
+  <span class="kw">return</span> JSON.parse(fs.readFileSync(path.join(JSON_DIR, name + <span class="str">'.json'</span>), <span class="str">'utf-8'</span>));
+}
+
+<span class="kw">function</span> <span class="fn">write</span>(name, data) {
+  fs.writeFileSync(path.join(JSON_DIR, name + <span class="str">'.json'</span>), JSON.stringify(data, <span class="kw">null</span>, 2), <span class="str">'utf-8'</span>);
+}</code></pre>
+
+  <h4 class="sub-sub">XML Update Pattern</h4>
+  <pre><code><span class="kw">function</span> <span class="fn">updatePaymentStatus</span>(id, status, reason) {
+  <span class="kw">const</span> doc = readXML(<span class="str">'payments.xml'</span>);          <span class="cm">// 1. parse XML</span>
+  updateNodeById(doc, <span class="str">'payment'</span>, id, {           <span class="cm">// 2. find &amp; mutate node</span>
+    status, denialReason: reason
+  });
+  writeXML(<span class="str">'payments.xml'</span>, doc);               <span class="cm">// 3. serialize back to disk</span>
+}</code></pre>
+
+  <!-- 3.4 XSLT -->
+  <h3 class="sub-title page-break">3.4 XSLT Transformations</h3>
+  <p>
+    BoardEase uses three XSLT stylesheets to transform raw XML data into human-readable
+    HTML reports and structured JSON output. These are served through the
+    <code>/api/xml</code> routes and rendered in the Admin Reports dashboard.
+  </p>
+
+  <table>
+    <thead><tr><th>XSLT File</th><th>Input</th><th>Output</th><th>Used In</th></tr></thead>
+    <tbody>
+      <tr><td><code>payments-to-html.xslt</code></td><td>payments.xml</td><td>Styled HTML table</td><td>Payments Report tab</td></tr>
+      <tr><td><code>users-to-html.xslt</code></td><td>users.xml</td><td>Tenant card layout</td><td>Tenants Report tab</td></tr>
+      <tr><td><code>payments-to-json.xslt</code></td><td>payments.xml</td><td>JSON string</td><td>Payments JSON tab</td></tr>
+    </tbody>
+  </table>
+
+  <h4 class="sub-sub">payments-to-html.xslt — Key Template</h4>
+  <div class="xml-tree">
+<span class="tag">&lt;xsl:for-each</span> <span class="attr">select</span>=<span class="val">"payments/payment"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;xsl:sort</span> <span class="attr">select</span>=<span class="val">"date"</span> <span class="attr">order</span>=<span class="val">"descending"</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;&lt;xsl:value-of</span> <span class="attr">select</span>=<span class="val">"tenantName"</span><span class="tag">/&gt;&lt;/td&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">class</span>=<span class="val">"amount"</span><span class="tag">&gt;</span>&#8369;
+      <span class="tag">&lt;xsl:value-of</span> <span class="attr">select</span>=<span class="val">"format-number(amount,'#,##0')"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>
+      <span class="tag">&lt;xsl:attribute</span> <span class="attr">name</span>=<span class="val">"class"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;xsl:value-of</span> <span class="attr">select</span>=<span class="val">"status"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/xsl:attribute&gt;</span>
+      <span class="tag">&lt;xsl:value-of</span> <span class="attr">select</span>=<span class="val">"status"</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/xsl:for-each&gt;</span>
+  </div>
+
+  <h4 class="sub-sub">XSLT Engine with DOM Fallback</h4>
+  <pre><code><span class="cm">// backend/models/xsltModel.js</span>
+<span class="kw">async function</span> <span class="fn">transformToHTML</span>(xmlFile, xsltFile) {
+  <span class="kw">if</span> (xslt4node) {
+    <span class="cm">// Primary: native XSLT engine</span>
+    <span class="kw">return new</span> Promise((resolve, reject) => {
+      xslt4node.transform(
+        { source: xmlPath, xsltPath, result: <span class="str">'string'</span> },
+        (err, result) => err ? reject(err) : resolve(result)
+      );
+    });
+  }
+  <span class="cm">// Fallback: build HTML table from DOM-parsed JSON</span>
+  <span class="kw">const</span> data = xmlFileToJson(xmlFile);
+  <span class="kw">return</span> buildHTMLTable(data);
+}</code></pre>
+
+  <!-- 3.5 Scripting -->
+  <h3 class="sub-title">3.5 Scripting Integration</h3>
+  <p>
+    BoardEase integrates scripting at multiple levels — from the Docker startup
+    automation to the frontend build pipeline and backend server initialization.
+  </p>
+
+  <div class="feature-card">
+    <h4>🐳 Docker Compose — Full Stack Orchestration</h4>
+    <p>A single <code>docker compose up --build -d</code> command starts all 6 services (frontend, backend, Kafka, Zookeeper, RabbitMQ, Redis) with health checks ensuring correct startup order.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>🦇 start.bat — Windows One-Click Launcher</h4>
+    <p>A Windows batch script checks for Docker installation, runs <code>docker compose up --build -d</code>, and prints all service URLs to the console. Handles errors with clear messages.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>🦇 install.bat — Dependency Installer</h4>
+    <p>Runs <code>npm install</code> for both backend and frontend sequentially. Exits with error code if any step fails, preventing partial installations.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>⚙️ next.config.js — Build Configuration</h4>
+    <p>Configures Next.js with <code>output: "standalone"</code> for Docker production builds, disables image optimization for XML-served content, and injects the API URL environment variable at build time.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>🔐 JWT Middleware — Auth Scripting</h4>
+    <p>The <code>auth.js</code> middleware script intercepts all protected API routes, verifies the JWT token from the Authorization header, and attaches the decoded user object to <code>req.user</code>.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>📝 logActivity() — Automated Audit Logging</h4>
+    <p>Every significant action (login, payment, message, notification) automatically calls <code>logActivity(type, detail, ref)</code> which appends a timestamped entry to <code>backend/data/json/logs.json</code> — no manual logging needed.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>🌐 Public Landing Page (<code>/</code>)</h4>
+    <p>Animated hero section with live room stats fetched from <code>/api/rooms/stats</code>, about section with animated counters, and a contact form. Fully responsive with hamburger nav.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>📝 Tenant Self-Registration (<code>/register</code>)</h4>
+    <p>New tenants can create their own account without admin involvement. Registered accounts default to the <code>tenant</code> role. Fields: full name, username, password, phone, address, emergency contact.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>👤 Profile Pages (<code>/admin/profile</code>, <code>/user/profile</code>)</h4>
+    <p>Both admin and tenant users can edit personal details (full name, phone, birthday, address, emergency contact), upload/change their profile avatar, and change their password with current password verification.</p>
+  </div>
+
+  <div class="feature-card">
+    <h4>📂 Utility Scripts</h4>
+    <p><code>scripts/seed-room-images.js</code> seeds default room images into the data directory. <code>scripts/sync-rooms-xml.js</code> syncs <code>rooms.json</code> → <code>rooms.xml</code> for XSLT reports.</p>
+  </div>
+
+</div>
+</body>
+</html>

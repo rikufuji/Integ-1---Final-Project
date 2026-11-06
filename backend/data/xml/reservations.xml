@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reservations>
+  <reservation>
+    <id>e5297efb-9887-4523-9d07-3d67db8f629f</id>
+    <tenantId>user1</tenantId>
+    <tenantName>Daniela</tenantName>
+    <roomId>r101</roomId>
+    <roomNumber>101</roomNumber>
+    <moveInDate>2026-05-20</moveInDate>
+    <downPayment>1200</downPayment>
+    <method>GCash</method>
+    <note/>
+    <proofImage>resv-1779276576910.jpg</proofImage>
+    <adminNote/>
+    <status>approved</status>
+    <type>reservation</type>
+    <createdAt>2026-05-20T11:29:36.914Z</createdAt>
+    <seqNum>1</seqNum>
+  </reservation>
+  <reservation>
+    <id>c24edf90-dd96-45de-ab24-71400447635c</id>
+    <tenantId>user2</tenantId>
+    <tenantName>Mico Jabagat</tenantName>
+    <roomId>r101</roomId>
+    <roomNumber>101</roomNumber>
+    <moveInDate>2026-05-20</moveInDate>
+    <downPayment>1200</downPayment>
+    <method>GCash</method>
+    <note/>
+    <proofImage>resv-1779277823934.jpg</proofImage>
+    <adminNote/>
+    <status>approved</status>
+    <type>reservation</type>
+    <createdAt>2026-05-20T11:50:23.945Z</createdAt>
+    <seqNum>2</seqNum>
+  </reservation>
+<reservation><id>d94f7065-a48a-4c2b-947c-49d29f3dc3cd</id><tenantId>user3</tenantId><tenantName>Riku Fuji</tenantName><roomId>r105</roomId><roomNumber>105</roomNumber><moveInDate>2026-05-22</moveInDate><downPayment>500</downPayment><method>GCash</method><note><![CDATA[mine]]></note><proofImage>resv-1779326940361.jpg</proofImage><adminNote></adminNote><status>pending</status><type>reservation</type><createdAt>2026-05-21T01:29:00.366Z</createdAt><seqNum>3</seqNum></reservation></reservations>

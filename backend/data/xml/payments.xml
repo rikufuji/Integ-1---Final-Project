@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<payments>
+  <payment>
+    <id>p001</id>
+    <tenantId>user1</tenantId>
+    <tenantName>Daniela</tenantName>
+    <roomNumber>101</roomNumber>
+    <amount>1200</amount>
+    <date>2026-05-20</date>
+    <method>GCash</method>
+    <status>approved</status>
+    <message>First month rent via reservation down payment</message>
+    <denialReason/>
+    <createdAt>2026-05-20T11:30:03.197Z</createdAt>
+  </payment>
+  <payment>
+    <id>p002</id>
+    <tenantId>user1</tenantId>
+    <tenantName>Daniela</tenantName>
+    <roomNumber>101</roomNumber>
+    <amount>1200</amount>
+    <date>2026-05-20</date>
+    <method>GCash</method>
+    <status>approved</status>
+    <message/>
+    <denialReason/>
+    <createdAt>2026-05-20T11:49:00.253Z</createdAt>
+  </payment>
+  <payment>
+    <id>p003</id>
+    <tenantId>user2</tenantId>
+    <tenantName>Mico Jabagat</tenantName>
+    <roomNumber>101</roomNumber>
+    <amount>1200</amount>
+    <date>2026-05-20</date>
+    <method>GCash</method>
+    <status>approved</status>
+    <message>First month rent via reservation down payment</message>
+    <denialReason/>
+    <createdAt>2026-05-20T11:50:57.064Z</createdAt>
+  </payment>
+<payment><id>p004</id><tenantId>user1</tenantId><tenantName>Daniela</tenantName><roomNumber>101</roomNumber><amount>1500</amount><date>2026-05-21</date><method>GCash</method><status>pending</status><message></message><denialReason></denialReason><proofImage></proofImage><createdAt>2026-05-21T01:29:55.524Z</createdAt></payment></payments>

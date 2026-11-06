@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BoardEase — Part 4: Screenshots & Outputs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#1e2340;line-height:1.7}
+  .doc{max-width:900px;margin:0 auto;padding:60px 48px}
+  .part-header{background:linear-gradient(135deg,#6c7fe8,#3b4fa8);border-radius:16px;padding:32px 36px;margin-bottom:48px;color:#fff}
+  .part-header h1{font-size:32px;font-weight:900;margin-bottom:6px}
+  .part-header p{font-size:15px;opacity:0.85}
+  .section-num{display:inline-block;background:#3b4fa8;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+  h2.section-title{font-size:28px;font-weight:800;color:#1e2340;margin-bottom:8px;padding-bottom:12px;border-bottom:3px solid #3b4fa8}
+  h3.sub-title{font-size:18px;font-weight:700;color:#3b4fa8;margin:28px 0 12px}
+  p{margin-bottom:14px;font-size:15px;color:#374151}
+  ul{margin:0 0 14px 24px}
+  li{font-size:15px;color:#374151;margin-bottom:6px}
+
+  /* boxes */
+  .info-box{background:#eff6ff;border-left:4px solid #3b4fa8;border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+  .info-box p{margin:0;font-size:14px;color:#1e40af}
+
+  /* screenshot placeholder */
+  .screen{background:#f8faff;border:2px dashed #c7d2fe;border-radius:12px;padding:28px 20px;margin:16px 0;text-align:center}
+  .screen-icon{font-size:36px;margin-bottom:10px}
+  .screen-title{font-size:14px;font-weight:700;color:#3b4fa8;margin-bottom:4px}
+  .screen-desc{font-size:13px;color:#6b7280}
+  .screen-url{display:inline-block;margin-top:8px;background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+
+  /* grid */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0}
+
+  /* xml block */
+  .xml-block{background:#1e2340;color:#e2e8f0;border-radius:12px;padding:18px 22px;font-family:'Courier New',monospace;font-size:12px;line-height:1.8;overflow-x:auto;margin:14px 0}
+  .tag{color:#f9a8d4}.attr{color:#93c5fd}.val{color:#fde68a}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th{background:#3b4fa8;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+  td{padding:9px 14px;border-bottom:1px solid #e8ecf8;color:#374151}
+  tr:last-child td{border-bottom:none}
+
+  /* url card */
+  .url-card{background:#f8faff;border:1px solid #e0e7ff;border-radius:12px;padding:18px 22px;margin:10px 0;display:flex;align-items:center;gap:16px}
+  .url-icon{font-size:28px;flex-shrink:0}
+  .url-label{font-size:13px;color:#6b7280;font-weight:600}
+  .url-val{font-size:15px;font-weight:700;color:#3b4fa8}
+
+  /* final box */
+  .final{background:linear-gradient(135deg,#1d4ed8,#3b4fa8);border-radius:16px;padding:36px;text-align:center;margin-top:48px;color:#fff}
+  .final h3{font-size:24px;font-weight:800;margin-bottom:10px}
+  .final p{font-size:15px;opacity:0.85;margin:0}
+
+  @media print{.doc{padding:40px 32px}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <div class="part-header">
+    <h1>🖼️ Part 4 — Screenshots &amp; Outputs</h1>
+    <p>System URLs · Interface descriptions · JSON file outputs · Deployment guide</p>
+  </div>
+
+  <div class="section-num">Section 5</div>
+  <h2 class="section-title">Screenshots / Outputs</h2>
+
+  <!-- 5.1 URLs -->
+  <h3 class="sub-title">5.1 System URLs</h3>
+
+  <div class="url-card">
+    <div class="url-icon">🌐</div>
+    <div>
+      <div class="url-label">Frontend (Next.js)</div>
+      <div class="url-val">http://localhost:3000</div>
+    </div>
+  </div>
+  <div class="url-card">
+    <div class="url-icon">⚙️</div>
+    <div>
+      <div class="url-label">Backend REST API</div>
+      <div class="url-val">http://localhost:5000</div>
+    </div>
+  </div>
+  <div class="url-card">
+    <div class="url-icon">🐇</div>
+    <div>
+      <div class="url-label">RabbitMQ Management UI</div>
+      <div class="url-val">http://localhost:15672 &nbsp;(guest / guest)</div>
+    </div>
+  </div>
+  <div class="url-card">
+    <div class="url-icon">🟥</div>
+    <div>
+      <div class="url-label">Redis</div>
+      <div class="url-val">localhost:6379</div>
+    </div>
+  </div>
+
+  <!-- 5.2 Interface -->
+  <h3 class="sub-title">5.2 System Interface</h3>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">🏠</div>
+      <div class="screen-title">Landing Page</div>
+      <div class="screen-desc">Hero section with house image, stats strip, About section, and Contact form</div>
+      <div class="screen-url">localhost:3000</div>
+    </div>
+    <div class="screen">
+      <div class="screen-icon">🔐</div>
+      <div class="screen-title">Login Page</div>
+      <div class="screen-desc">Username + password form with JWT auth. Redirects to role-based dashboard</div>
+      <div class="screen-url">localhost:3000/login</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">📊</div>
+      <div class="screen-title">Admin Dashboard</div>
+      <div class="screen-desc">Available rooms grid, payment info card, accounts receivable donut charts, pending notifications</div>
+      <div class="screen-url">localhost:3000/admin/dashboard</div>
+    </div>
+    <div class="screen">
+      <div class="screen-icon">🏠</div>
+      <div class="screen-title">Room Management</div>
+      <div class="screen-desc">Room cards with photo carousel, status badges, assign/unassign tenant modals</div>
+      <div class="screen-url">localhost:3000/admin/rooms</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">💳</div>
+      <div class="screen-title">Payments Dashboard (Admin)</div>
+      <div class="screen-desc">Tabbed view of payments and reservations. Review modal with proof image, approve/deny actions</div>
+      <div class="screen-url">localhost:3000/admin/payments</div>
+    </div>
+    <div class="screen">
+      <div class="screen-icon">💬</div>
+      <div class="screen-title">Messaging (Admin)</div>
+      <div class="screen-desc">Channel list with BoardEase GC, Tenant Messages, and custom groups. Image sharing supported</div>
+      <div class="screen-url">localhost:3000/admin/messages</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">📋</div>
+      <div class="screen-title">Reports Dashboard</div>
+      <div class="screen-desc">XSLT-transformed HTML reports for payments and tenants, JSON views, and activity logs</div>
+      <div class="screen-url">localhost:3000/admin/reports</div>
+    </div>
+    <div class="screen">
+      <div class="screen-icon">👤</div>
+      <div class="screen-title">User Dashboard</div>
+      <div class="screen-desc">Room details card, rent history table, real-time notifications panel</div>
+      <div class="screen-url">localhost:3000/user/dashboard</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">💰</div>
+      <div class="screen-title">User Payments</div>
+      <div class="screen-desc">Payment submission form with GCash/bank info banner, proof upload, payment history table</div>
+      <div class="screen-url">localhost:3000/user/payments</div>
+    </div>
+    <div class="screen">
+      <div class="screen-icon">📱</div>
+      <div class="screen-title">Mobile View (iPhone SE)</div>
+      <div class="screen-desc">Hamburger sidebar drawer, stacked layouts, 375px optimized — all pages fully usable</div>
+      <div class="screen-url">375px viewport</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">👤</div>
+      <div class="screen-title">Admin Profile</div>
+      <div class="screen-desc">Edit personal details, upload avatar, change password with current password verification</div>
+      <div class="screen-url">localhost:3000/admin/profile</div>
+    </div>
+    <div class="screen">
+      <div class="screen-icon">👤</div>
+      <div class="screen-title">Tenant Profile</div>
+      <div class="screen-desc">Edit personal details, upload avatar, change password</div>
+      <div class="screen-url">localhost:3000/user/profile</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="screen">
+      <div class="screen-icon">📝</div>
+      <div class="screen-title">Tenant Registration</div>
+      <div class="screen-desc">Public self-registration form. Creates a tenant account without admin involvement</div>
+      <div class="screen-url">localhost:3000/register</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">5.3 Data File Outputs</h3>
+  <p>XML files at <code>backend/data/xml/</code> store payments, messages, logs, and reservations. JSON files at <code>backend/data/json/</code> store users, rooms, and groups.</p>
+
+  <h4 style="font-size:14px;font-weight:700;color:#1e2340;margin:16px 0 8px">users.json — Tenant record (JSON)</h4>
+  <div class="xml-block">
+{
+  <span class="attr">"id"</span>: <span class="val">"u002"</span>,
+  <span class="attr">"username"</span>: <span class="val">"michael"</span>,
+  <span class="attr">"role"</span>: <span class="val">"tenant"</span>,
+  <span class="attr">"fullName"</span>: <span class="val">"Michael Angelo Jabagat"</span>,
+  <span class="attr">"roomNumber"</span>: <span class="val">"101"</span>,
+  <span class="attr">"monthlyRent"</span>: <span class="val">"1200"</span>,
+  <span class="attr">"dueDate"</span>: <span class="val">"6"</span>,
+  <span class="attr">"moveInDate"</span>: <span class="val">"2026-01-06"</span>
+}
+  </div>
+
+  <h4 style="font-size:14px;font-weight:700;color:#1e2340;margin:16px 0 8px">payments.xml — Payment record (XML)</h4>
+  <div class="xml-block">
+<span class="tag">&lt;payment&gt;</span>
+  <span class="tag">&lt;id&gt;</span><span class="val">p001</span><span class="tag">&lt;/id&gt;</span>
+  <span class="tag">&lt;tenantName&gt;</span><span class="val">Daniela</span><span class="tag">&lt;/tenantName&gt;</span>
+  <span class="tag">&lt;roomNumber&gt;</span><span class="val">101</span><span class="tag">&lt;/roomNumber&gt;</span>
+  <span class="tag">&lt;amount&gt;</span><span class="val">1200</span><span class="tag">&lt;/amount&gt;</span>
+  <span class="tag">&lt;method&gt;</span><span class="val">GCash</span><span class="tag">&lt;/method&gt;</span>
+  <span class="tag">&lt;status&gt;</span><span class="val">approved</span><span class="tag">&lt;/status&gt;</span>
+  <span class="tag">&lt;date&gt;</span><span class="val">2026-05-05</span><span class="tag">&lt;/date&gt;</span>
+<span class="tag">&lt;/payment&gt;</span>
+  </div>
+
+  <h4 style="font-size:14px;font-weight:700;color:#1e2340;margin:16px 0 8px">logs.xml — Activity entry (XML)</h4>
+  <div class="xml-block">
+<span class="tag">&lt;log&gt;</span>
+  <span class="tag">&lt;timestamp&gt;</span><span class="val">2026-05-05T08:00:00.000Z</span><span class="tag">&lt;/timestamp&gt;</span>
+  <span class="tag">&lt;type&gt;</span><span class="val">payment</span><span class="tag">&lt;/type&gt;</span>
+  <span class="tag">&lt;detail&gt;</span><span class="val">Payment approved for Daniela</span><span class="tag">&lt;/detail&gt;</span>
+  <span class="tag">&lt;ref&gt;</span><span class="val">p001</span><span class="tag">&lt;/ref&gt;</span>
+<span class="tag">&lt;/log&gt;</span>
+  </div>
+
+  <h4 style="font-size:14px;font-weight:700;color:#1e2340;margin:16px 0 8px">settings.json — Payment info</h4>
+  <div class="xml-block">
+{
+  <span class="attr">"gcashName"</span>: <span class="val">"Jed Tisoy"</span>,
+  <span class="attr">"gcashNumber"</span>: <span class="val">"09755918109"</span>,
+  <span class="attr">"gcashQR"</span>: <span class="val">"qr-1779012187561.jpg"</span>,
+  <span class="attr">"bankName"</span>: <span class="val">"Jed Tisoy"</span>,
+  <span class="attr">"bankAccount"</span>: <span class="val">"09755918109"</span>,
+  <span class="attr">"paymentNote"</span>: <span class="val">"here you send your payment thank you"</span>
+}
+  </div>
+
+  <!-- 5.4 Default Accounts -->
+  <h3 class="sub-title">5.4 Default Test Accounts</h3>
+  <table>
+    <thead><tr><th>Role</th><th>Username</th><th>Password</th></tr></thead>
+    <tbody>
+      <tr><td>Admin</td><td>admin</td><td>admin123</td></tr>
+      <tr><td>Tenant</td><td>daniela</td><td>daniela</td></tr>
+      <tr><td>Tenant</td><td>mico</td><td>mico</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 5.5 How to run -->
+  <h3 class="sub-title">5.5 How to Run the System</h3>
+
+  <div class="info-box">
+    <p>📋 <strong>Requirement:</strong> Docker Desktop must be installed and running. Docker only runs the infrastructure (Kafka, RabbitMQ, Redis). Frontend and backend run in your terminal.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>Step</th><th>Command / Action</th></tr></thead>
+    <tbody>
+      <tr><td>1. Install dependencies (first time)</td><td>Double-click <code>install.bat</code></td></tr>
+      <tr><td>2. Start infrastructure</td><td>Double-click <code>start.bat</code> OR run <code>docker compose up -d</code></td></tr>
+      <tr><td>3. Run backend</td><td><code>cd backend &amp;&amp; npm run dev</code></td></tr>
+      <tr><td>4. Run frontend</td><td><code>cd frontend &amp;&amp; npm run dev</code></td></tr>
+      <tr><td>5. Open the app</td><td>Visit <code>http://localhost:3000</code> in any browser</td></tr>
+      <tr><td>6. Login as admin</td><td>Username: <code>admin</code> / Password: <code>admin123</code></td></tr>
+      <tr><td>7. View logs</td><td><code>docker compose logs -f</code></td></tr>
+      <tr><td>8. Stop infrastructure</td><td><code>docker compose down</code></td></tr>
+    </tbody>
+  </table>
+
+  <!-- Final -->
+  <div class="final">
+    <h3>📄 End of Documentation</h3>
+    <p>BoardEase System Documentation — Parts 1 through 4<br/>
+    For questions, refer to the README.md in the project root.</p>
+  </div>
+
+</div>
+</body>
+</html>

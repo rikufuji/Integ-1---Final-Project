@@ -1,0 +1,326 @@
+.main {
+  margin-left: 220px;
+  flex: 1;
+  padding: 32px;
+  min-height: 100vh;
+  background: #f0f4ff;
+}
+
+@media (max-width: 768px) {
+  .main { margin-left: 0; padding: 12px; padding-top: calc(52px + 12px); }
+  .header { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .userBadge { align-self: flex-start; }
+  .title { font-size: 20px; }
+  .body { flex-direction: column; }
+  .leftCol { flex: unset; width: 100%; }
+  .rightCol { width: 100%; }
+  .roomCard { flex-direction: column; align-items: flex-start; }
+  .roomImg { width: 100%; height: 150px; }
+  .roomImgWrap { width: 100%; }
+  .illustrationImg { max-width: 100%; height: 120px; }
+}
+@media (max-width: 480px) {
+  .main { padding: 10px; padding-top: calc(52px + 10px); }
+  .title { font-size: 18px; }
+  .card { padding: 14px; }
+  .avatarLarge, .avatarLargeImg { width: 72px; height: 72px; font-size: 24px; }
+  .roomCard { gap: 12px; padding: 12px; }
+  .roomImg { height: 130px; }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1e2340;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.userBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 40px;
+  padding: 6px 14px 6px 6px;
+  box-shadow: 0 2px 12px rgba(59,79,168,0.10);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e2340;
+}
+
+.userRole {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.body {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Left column */
+.leftCol {
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatarSection {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.avatarLarge {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6c7fe8, #3b4fa8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 16px rgba(59,79,168,0.18);
+}
+
+.avatarLargeImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 16px rgba(59,79,168,0.18);
+}
+
+.editIconBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.errorMsg {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.fieldList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fieldBox {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(59,79,168,0.07);
+  padding: 12px 16px;
+  width: 100%;
+}
+
+.fieldValue {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.fieldLabel {
+  font-weight: 700;
+  color: #1e2340;
+}
+
+.fieldInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  align-self: flex-start;
+}
+
+.editLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b4fa8;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.saveLink {
+  font-size: 14px;
+  font-weight: 700;
+  color: #15803d;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Right column */
+.rightCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(59,79,168,0.08);
+  padding: 24px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e2340;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.roomCard {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #f8faff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.roomImgWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.roomImg {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.roomLabel {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.roomStats {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.roomStat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roomStatIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.roomStatValue {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.roomStatLabel {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 1px;
+}
+
+/* Illustration */
+.illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.illustrationImg {
+  width: 100%;
+  max-width: 340px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0.85;
+}

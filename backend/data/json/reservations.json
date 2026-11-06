@@ -1,0 +1,35 @@
+[
+  {
+    "id": "e5297efb-9887-4523-9d07-3d67db8f629f",
+    "tenantId": "user1",
+    "tenantName": "Daniela",
+    "roomId": "r101",
+    "roomNumber": "101",
+    "moveInDate": "2026-05-20",
+    "downPayment": "1200",
+    "method": "GCash",
+    "note": "",
+    "proofImage": "resv-1779276576910.jpg",
+    "adminNote": "",
+    "status": "approved",
+    "type": "reservation",
+    "createdAt": "2026-05-20T11:29:36.914Z"
+  },
+  {
+    "id": "c24edf90-dd96-45de-ab24-71400447635c",
+    "tenantId": "user2",
+    "tenantName": "Mico Jabagat",
+    "roomId": "r101",
+    "roomNumber": "101",
+    "moveInDate": "2026-05-20",
+    "downPayment": "1200",
+    "method": "GCash",
+    "note": "",
+    "proofImage": "resv-1779277823934.jpg",
+    "adminNote": "",
+    "status": "approved",
+    "type": "reservation",
+    "createdAt": "2026-05-20T11:50:23.945Z",
+    "seqNum": 1
+  }
+]

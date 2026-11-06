@@ -1,0 +1,23 @@
+[
+  {
+    "id": "95efab0f-0459-41d3-a7c4-5fb1ef728948",
+    "name": "hh",
+    "createdBy": "user1",
+    "createdAt": "2026-05-20T17:03:24.607Z",
+    "members": [
+      "user1",
+      "user2"
+    ]
+  },
+  {
+    "id": "b234a555-8e24-46f6-9833-2fcba542d833",
+    "name": "imong mama",
+    "createdBy": "user1",
+    "createdAt": "2026-05-21T01:29:37.685Z",
+    "members": [
+      "user1",
+      "user2",
+      "user3"
+    ]
+  }
+]

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BoardEase System Documentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#1e2340;line-height:1.7}
+
+  /* ── Cover ── */
+  .cover{min-height:100vh;background:linear-gradient(155deg,#1d4ed8 0%,#3b4fa8 50%,#6c7fe8 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;overflow:hidden}
+  .cover::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(118deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 72px)}
+  .cover-logo{width:90px;height:90px;background:rgba(255,255,255,0.15);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:32px;border:2px solid rgba(255,255,255,0.3)}
+  .cover h1{font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:12px}
+  .cover h2{font-size:22px;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:40px}
+  .cover-divider{width:80px;height:4px;background:rgba(255,255,255,0.5);border-radius:2px;margin:0 auto 40px}
+  .cover-meta{display:flex;flex-direction:column;gap:10px;color:rgba(255,255,255,0.75);font-size:15px}
+  .cover-meta strong{color:#fff}
+  .cover-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;margin-top:32px}
+  .page-break{page-break-after:always}
+
+  /* ── Layout ── */
+  .doc{max-width:900px;margin:0 auto;padding:60px 48px}
+
+  /* ── Section headers ── */
+  .section-num{display:inline-block;background:#3b4fa8;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+  h2.section-title{font-size:30px;font-weight:800;color:#1e2340;margin-bottom:8px;padding-bottom:12px;border-bottom:3px solid #3b4fa8}
+  h3.sub-title{font-size:18px;font-weight:700;color:#3b4fa8;margin:28px 0 12px}
+  h4.sub-sub{font-size:15px;font-weight:700;color:#1e2340;margin:20px 0 8px}
+  p{margin-bottom:14px;font-size:15px;color:#374151}
+  ul,ol{margin:0 0 14px 24px}
+  li{font-size:15px;color:#374151;margin-bottom:6px}
+
+  /* ── Info box ── */
+  .info-box{background:#eff6ff;border-left:4px solid #3b4fa8;border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0}
+  .info-box p{margin:0;font-size:14px;color:#1e40af}
+
+  /* ── Cards grid ── */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0}
+  .card{background:#f8faff;border:1px solid #e0e7ff;border-radius:12px;padding:20px}
+  .card-icon{font-size:28px;margin-bottom:10px}
+  .card h4{font-size:14px;font-weight:700;color:#1e2340;margin-bottom:6px}
+  .card p{font-size:13px;color:#6b7280;margin:0}
+
+  /* ── Table ── */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th{background:#3b4fa8;color:#fff;padding:11px 14px;text-align:left;font-weight:600}
+  td{padding:10px 14px;border-bottom:1px solid #e8ecf8;color:#374151}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#f5f7ff}
+
+  /* ── Architecture diagram ── */
+  .arch{background:#f8faff;border:1px solid #e0e7ff;border-radius:16px;padding:32px;margin:24px 0;text-align:center}
+  .arch-row{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:12px 0}
+  .arch-box{background:#fff;border:2px solid #3b4fa8;border-radius:10px;padding:12px 20px;font-size:13px;font-weight:700;color:#1e2340;min-width:120px;text-align:center}
+  .arch-box.green{border-color:#22c55e;color:#15803d}
+  .arch-box.orange{border-color:#f59e0b;color:#b45309}
+  .arch-box.red{border-color:#ef4444;color:#b91c1c}
+  .arch-box.purple{border-color:#8b5cf6;color:#6d28d9}
+  .arch-arrow{font-size:22px;color:#6b7280;padding:0 8px;line-height:1}
+  .arch-label{font-size:11px;color:#6b7280;margin-top:4px;font-weight:500}
+  .arch-section{margin:16px 0}
+  .arch-section-title{font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+
+  /* ── Flow diagram ── */
+  .flow{background:#fff;border:1px solid #e0e7ff;border-radius:12px;padding:24px;margin:20px 0}
+  .flow-step{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+  .flow-num{width:32px;height:32px;background:#3b4fa8;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+  .flow-content h5{font-size:14px;font-weight:700;color:#1e2340;margin-bottom:4px}
+  .flow-content p{font-size:13px;color:#6b7280;margin:0}
+  .flow-connector{width:2px;height:16px;background:#e0e7ff;margin-left:15px}
+
+  /* ── Stack badge ── */
+  .stack-badges{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700}
+  .badge-blue{background:#dbeafe;color:#1d4ed8}
+  .badge-green{background:#dcfce7;color:#15803d}
+  .badge-orange{background:#fef3c7;color:#b45309}
+  .badge-purple{background:#ede9fe;color:#6d28d9}
+  .badge-red{background:#fee2e2;color:#b91c1c}
+  .badge-gray{background:#f3f4f6;color:#374151}
+
+  @media print{
+    .cover{min-height:100vh}
+    .page-break{page-break-after:always}
+    .doc{padding:40px 32px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     COVER PAGE
+══════════════════════════════════════════════════════ -->
+<div class="cover page-break">
+  <div class="cover-logo">🏠</div>
+  <h1>BoardEase</h1>
+  <h2>Boarding House Management System</h2>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div><strong>Document Type:</strong> System Documentation</div>
+    <div><strong>Version:</strong> 1.0.0</div>
+    <div><strong>Academic Year:</strong> 2025 – 2026</div>
+    <div><strong>Course:</strong> Information Management / Web Systems</div>
+  </div>
+  <div class="cover-badge">📄 Part 1 of 4 — Overview &amp; Architecture</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — SYSTEM OVERVIEW
+══════════════════════════════════════════════════════ -->
+<div class="doc page-break">
+  <div class="section-num">Section 1</div>
+  <h2 class="section-title">System Overview</h2>
+
+  <h3 class="sub-title">1.1 Purpose of the System</h3>
+  <p>
+    BoardEase is a full-stack web-based boarding house management system designed to
+    digitize and streamline the day-to-day operations of a boarding house. It replaces
+    manual paper-based processes with a centralized digital platform that handles tenant
+    management, room assignments, payment tracking, real-time messaging, and administrative
+    reporting — all accessible from any device including mobile phones.
+  </p>
+  <p>
+    The system uses <strong>XML files as its primary data store</strong> for payments, messages, logs,
+    and reservations — parsed and written using the <code>xmldom</code> library. Users, rooms, and groups
+    are stored in JSON files. XSLT transformations are used for admin reports against the same XML files.
+    Real-time communication is powered by <strong>Socket.IO</strong> with <strong>Apache Kafka</strong>
+    as the message broker for chat delivery and <strong>RabbitMQ</strong> for payment event notifications.
+  </p>
+
+  <div class="info-box">
+    <p>💡 <strong>Data Store:</strong> Payments, messages, logs, and reservations are stored in XML files at <code>backend/data/xml/</code> using <code>xmldom</code> for parsing and serialization. Users, rooms, and groups use JSON files at <code>backend/data/json/</code>. The same XML files are also used as input for XSLT report generation.</p>
+  </div>
+
+  <h3 class="sub-title">1.2 Target Users</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <h4>Admin (Landlord)</h4>
+      <p>Manages rooms, tenants, payments, reservations, and views XSLT-generated reports.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏠</div>
+      <h4>Tenant</h4>
+      <p>Views room details, submits payment requests, reserves rooms, and chats with admin and co-tenants.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <h4>Public Visitors</h4>
+      <p>Landing page with live room stats, about section, and contact form. Self-registration available at <code>/register</code>.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h4>Mobile Users</h4>
+      <p>Full responsive design supports iPhone SE (375px) and all modern smartphones.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">1.3 Technology Stack</h3>
+  <table>
+    <thead>
+      <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Frontend</td><td>Next.js 14, React 18</td><td>UI framework with SSR support</td></tr>
+      <tr><td>Styling</td><td>CSS Modules, globals.css</td><td>Responsive mobile-first design</td></tr>
+      <tr><td>Backend</td><td>Node.js, Express.js</td><td>REST API server</td></tr>
+      <tr><td>Real-time</td><td>Socket.IO</td><td>Live messaging and notifications</td></tr>
+      <tr><td>Message Broker</td><td>Apache Kafka (KafkaJS)</td><td>Chat message streaming</td></tr>
+      <tr><td>Event Queue</td><td>RabbitMQ (amqplib)</td><td>Payment event notifications</td></tr>
+      <tr><td>Data Store (primary)</td><td>XML files (xmldom)</td><td>Payments, messages, logs, reservations</td></tr>
+      <tr><td>Data Store (secondary)</td><td>JSON files (fs)</td><td>Users, rooms, groups</td></tr>
+      <tr><td>HTTP Client</td><td>Axios</td><td>Frontend API calls</td></tr>
+      <tr><td>Transforms</td><td>XSLT stylesheets</td><td>XML → HTML and XML → JSON reports</td></tr>
+      <tr><td>Auth</td><td>JWT + bcryptjs</td><td>Secure login and session management</td></tr>
+      <tr><td>File Upload</td><td>Multer</td><td>Payment proofs, room photos, QR codes</td></tr>
+      <tr><td>Container</td><td>Docker, Docker Compose</td><td>Full offline deployment</td></tr>
+    </tbody>
+  </table>
+
+  <div class="stack-badges">
+    <span class="badge badge-blue">Next.js 14</span>
+    <span class="badge badge-green">Node.js 18</span>
+    <span class="badge badge-orange">Apache Kafka</span>
+    <span class="badge badge-red">RabbitMQ</span>
+    <span class="badge badge-purple">Socket.IO</span>
+    <span class="badge badge-gray">JSON / XSLT</span>
+    <span class="badge badge-blue">JWT Auth</span>
+    <span class="badge badge-green">Docker</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — SYSTEM ARCHITECTURE
+══════════════════════════════════════════════════════ -->
+<div class="doc">
+  <div class="section-num">Section 2</div>
+  <h2 class="section-title">System Architecture</h2>
+
+  <h3 class="sub-title">2.1 High-Level Architecture</h3>
+  <p>
+    BoardEase follows a <strong>client-server architecture</strong> with an additional
+    message broker layer. The frontend (Next.js) communicates with the backend (Express)
+    via REST API calls and a persistent WebSocket connection. The backend integrates
+    Kafka and RabbitMQ as asynchronous message brokers, and reads/writes all data
+    to XML files on disk.
+  </p>
+
+  <div class="arch">
+    <div class="arch-section">
+      <div class="arch-section-title">Client Layer</div>
+      <div class="arch-row">
+        <div class="arch-box green">📱 Mobile Browser<div class="arch-label">iPhone SE / Android</div></div>
+        <div class="arch-arrow">  </div>
+        <div class="arch-box green">💻 Desktop Browser<div class="arch-label">Chrome / Firefox</div></div>
+      </div>
+    </div>
+    <div class="arch-row"><div class="arch-arrow">⬇</div></div>
+    <div class="arch-section">
+      <div class="arch-section-title">Frontend — Port 3000</div>
+      <div class="arch-row">
+        <div class="arch-box">⚛️ Next.js 14<div class="arch-label">React Pages + CSS Modules</div></div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="text-align:center"><div class="arch-arrow">⬇</div><div class="arch-label">REST API (Axios)</div></div>
+        <div style="text-align:center"><div class="arch-arrow">⬇</div><div class="arch-label">WebSocket (Socket.IO)</div></div>
+      </div>
+    </div>
+    <div class="arch-section">
+      <div class="arch-section-title">Backend — Port 5000</div>
+      <div class="arch-row">
+        <div class="arch-box">🟢 Express.js<div class="arch-label">REST API + Middleware</div></div>
+        <div class="arch-arrow">  </div>
+        <div class="arch-box purple">🔌 Socket.IO Server<div class="arch-label">Real-time Events</div></div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div style="display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap">
+        <div style="text-align:center"><div class="arch-arrow">⬇</div></div>
+        <div style="text-align:center"><div class="arch-arrow">⬇</div></div>
+        <div style="text-align:center"><div class="arch-arrow">⬇</div></div>
+        <div style="text-align:center"><div class="arch-arrow">⬇</div></div>
+      </div>
+    </div>
+    <div class="arch-section">
+      <div class="arch-section-title">Infrastructure Layer</div>
+      <div class="arch-row" style="gap:12px;flex-wrap:wrap">
+        <div class="arch-box orange">📨 Apache Kafka<div class="arch-label">Chat Messages</div></div>
+        <div class="arch-box red">🐇 RabbitMQ<div class="arch-label">Payment Events</div></div>
+        <div class="arch-box green">📄 XML + JSON Files<div class="arch-label">Data Store</div></div>
+        <div class="arch-box purple">🔄 XSLT Engine<div class="arch-label">Report Transforms</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">2.2 Message Flow — Chat (Kafka)</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h5>User sends a message</h5>
+        <p>Tenant or admin types a message in the chat UI and submits the form.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h5>Socket.IO emits <code>send_message</code></h5>
+        <p>The frontend emits the event with room ID, sender info, content, and optional image data.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h5>Backend publishes to Kafka topic</h5>
+        <p><code>publishMessage()</code> sends the message to the <code>boardease.messages</code> Kafka topic. If Kafka is unavailable, falls back to direct Socket.IO emit.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h5>Kafka consumer broadcasts</h5>
+        <p>The Kafka consumer reads from the topic and calls <code>io.to(room).emit("receive_message")</code> to all connected clients in that room.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div class="flow-content">
+        <h5>Message logged to JSON</h5>
+        <p><code>logActivity()</code> appends an entry to <code>backend/data/json/logs.json</code> with timestamp, type, and content.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">2.3 Message Flow — Payments (RabbitMQ)</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h5>Tenant submits payment</h5>
+        <p>Tenant fills the payment form with amount, method, date, and optional proof image.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h5>Backend saves to payments.json</h5>
+        <p>Payment record is written to <code>backend/data/json/payments.json</code> with status <code>pending</code>.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h5>Event published to RabbitMQ queue</h5>
+        <p><code>publishPaymentEvent()</code> sends the payment data to the <code>boardease.payments</code> durable queue.</p>
+      </div>
+    </div>
+    <div class="flow-connector"></div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h5>Consumer emits notification</h5>
+        <p>RabbitMQ consumer reads the message and calls <code>io.emit("payment_notification")</code> to notify the admin in real time.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">2.4 Docker Service Map</h3>
+  <table>
+    <thead>
+      <tr><th>Service</th><th>Image</th><th>Port</th><th>Role</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>kafka</td><td>confluentinc/cp-kafka:7.5.0</td><td>9092</td><td>Message streaming broker</td></tr>
+      <tr><td>zookeeper</td><td>confluentinc/cp-zookeeper:7.5.0</td><td>2181</td><td>Kafka cluster coordinator</td></tr>
+      <tr><td>rabbitmq</td><td>rabbitmq:3.12-management</td><td>5672 / 15672</td><td>Payment event queue</td></tr>
+      <tr><td>redis</td><td>redis:7-alpine</td><td>6379</td><td>Session / cache store</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

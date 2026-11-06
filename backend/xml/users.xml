@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>user1</id>
+    <username>admin</username>
+    <password>$2a$10$c5DNmqGVftHmn1cloQgxk.koWMez.1Q5V5rPWRwJApvUJaGZTzpIK</password>
+    <role>admin</role>
+    <fullName>Chloe Kardasian</fullName>
+    <phone>09123456789</phone>
+    <birthday>1995-03-20</birthday>
+    <address>Mati City, Davao Oriental</address>
+    <emergencyContact>John Kardasian</emergencyContact>
+    <accountNumber>ADMIN001</accountNumber>
+    <roomNumber></roomNumber>
+    <monthlyRent></monthlyRent>
+    <dueDate></dueDate>
+    <moveInDate></moveInDate>
+    <createdAt>2024-01-01T00:00:00.000Z</createdAt>
+  </user>
+</users>

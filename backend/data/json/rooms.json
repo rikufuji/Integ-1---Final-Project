@@ -1,0 +1,202 @@
+[
+  {
+    "id": "r101",
+    "roomNumber": "101",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "occupied",
+    "description": "Ground floor shared room with window",
+    "images": "room2.jpg"
+  },
+  {
+    "id": "r102",
+    "roomNumber": "102",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Ground floor shared room",
+    "images": "room4.jpg"
+  },
+  {
+    "id": "r103",
+    "roomNumber": "103",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Ground floor shared room",
+    "images": "room2.jpg"
+  },
+  {
+    "id": "r104",
+    "roomNumber": "104",
+    "type": "Shared",
+    "monthlyRent": "1000",
+    "capacity": "2",
+    "status": "available",
+    "description": "Ground floor shared room",
+    "images": "room4.jpg"
+  },
+  {
+    "id": "r105",
+    "roomNumber": "105",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Ground floor single room with private bath",
+    "images": "room1.jpg"
+  },
+  {
+    "id": "r106",
+    "roomNumber": "106",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Ground floor single room",
+    "images": "room3.jpg"
+  },
+  {
+    "id": "r107",
+    "roomNumber": "107",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Second floor shared room",
+    "images": "room2.jpg"
+  },
+  {
+    "id": "r108",
+    "roomNumber": "108",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Second floor shared room with balcony",
+    "images": "room4.jpg"
+  },
+  {
+    "id": "r109",
+    "roomNumber": "109",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Second floor single room",
+    "images": "room1.jpg"
+  },
+  {
+    "id": "r110",
+    "roomNumber": "110",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Second floor single room with window",
+    "images": "room3.jpg"
+  },
+  {
+    "id": "r111",
+    "roomNumber": "111",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Second floor shared room",
+    "images": "room2.jpg"
+  },
+  {
+    "id": "r112",
+    "roomNumber": "112",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Second floor shared room",
+    "images": "room4.jpg"
+  },
+  {
+    "id": "r113",
+    "roomNumber": "113",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Third floor single room",
+    "images": "room1.jpg"
+  },
+  {
+    "id": "r114",
+    "roomNumber": "114",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Third floor single room",
+    "images": "room3.jpg"
+  },
+  {
+    "id": "r115",
+    "roomNumber": "115",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Third floor shared room",
+    "images": "room2.jpg"
+  },
+  {
+    "id": "r116",
+    "roomNumber": "116",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Third floor shared room",
+    "images": "room4.jpg"
+  },
+  {
+    "id": "r117",
+    "roomNumber": "117",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Third floor single room with view",
+    "images": "room1.jpg"
+  },
+  {
+    "id": "r118",
+    "roomNumber": "118",
+    "type": "Single",
+    "monthlyRent": "1500",
+    "capacity": "1",
+    "status": "available",
+    "description": "Third floor single room",
+    "images": "room3.jpg"
+  },
+  {
+    "id": "r119",
+    "roomNumber": "119",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Top floor shared room",
+    "images": "room2.jpg"
+  },
+  {
+    "id": "r120",
+    "roomNumber": "120",
+    "type": "Shared",
+    "monthlyRent": "1200",
+    "capacity": "2",
+    "status": "available",
+    "description": "Top floor shared room",
+    "images": "room4.jpg"
+  }
+]

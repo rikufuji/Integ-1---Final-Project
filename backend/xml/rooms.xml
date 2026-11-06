@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rooms>
+  <room>
+    <id>r101</id>
+    <roomNumber>101</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>occupied</status>
+    <description>Ground floor shared room with window</description>
+    <images>room2.jpg</images>
+  </room>
+  <room>
+    <id>r102</id>
+    <roomNumber>102</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>occupied</status>
+    <description>Ground floor shared room</description>
+    <images>room4.jpg</images>
+  </room>
+  <room>
+    <id>r103</id>
+    <roomNumber>103</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>occupied</status>
+    <description>Ground floor shared room</description>
+    <images>room2.jpg</images>
+  </room>
+  <room>
+    <id>r104</id>
+    <roomNumber>104</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1000</monthlyRent>
+    <capacity>2</capacity>
+    <status>occupied</status>
+    <description>Ground floor shared room</description>
+    <images>room4.jpg</images>
+  </room>
+  <room>
+    <id>r105</id>
+    <roomNumber>105</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Ground floor single room with private bath</description>
+    <images>room1.jpg</images>
+  </room>
+  <room>
+    <id>r106</id>
+    <roomNumber>106</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Ground floor single room</description>
+    <images>room3.jpg</images>
+  </room>
+  <room>
+    <id>r107</id>
+    <roomNumber>107</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Second floor shared room</description>
+    <images>room2.jpg</images>
+  </room>
+  <room>
+    <id>r108</id>
+    <roomNumber>108</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Second floor shared room with balcony</description>
+    <images>room4.jpg</images>
+  </room>
+  <room>
+    <id>r109</id>
+    <roomNumber>109</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Second floor single room</description>
+    <images>room1.jpg</images>
+  </room>
+  <room>
+    <id>r110</id>
+    <roomNumber>110</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Second floor single room with window</description>
+    <images>room3.jpg</images>
+  </room>
+  <room>
+    <id>r111</id>
+    <roomNumber>111</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Second floor shared room</description>
+    <images>room2.jpg</images>
+  </room>
+  <room>
+    <id>r112</id>
+    <roomNumber>112</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Second floor shared room</description>
+    <images>room4.jpg</images>
+  </room>
+  <room>
+    <id>r113</id>
+    <roomNumber>113</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Third floor single room</description>
+    <images>room1.jpg</images>
+  </room>
+  <room>
+    <id>r114</id>
+    <roomNumber>114</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Third floor single room</description>
+    <images>room3.jpg</images>
+  </room>
+  <room>
+    <id>r115</id>
+    <roomNumber>115</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Third floor shared room</description>
+    <images>room2.jpg</images>
+  </room>
+  <room>
+    <id>r116</id>
+    <roomNumber>116</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Third floor shared room</description>
+    <images>room4.jpg</images>
+  </room>
+  <room>
+    <id>r117</id>
+    <roomNumber>117</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Third floor single room with view</description>
+    <images>room1.jpg</images>
+  </room>
+  <room>
+    <id>r118</id>
+    <roomNumber>118</roomNumber>
+    <type>Single</type>
+    <monthlyRent>1500</monthlyRent>
+    <capacity>1</capacity>
+    <status>available</status>
+    <description>Third floor single room</description>
+    <images>room3.jpg</images>
+  </room>
+  <room>
+    <id>r119</id>
+    <roomNumber>119</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Top floor shared room</description>
+    <images>room2.jpg</images>
+  </room>
+  <room>
+    <id>r120</id>
+    <roomNumber>120</roomNumber>
+    <type>Shared</type>
+    <monthlyRent>1200</monthlyRent>
+    <capacity>2</capacity>
+    <status>available</status>
+    <description>Top floor shared room</description>
+    <images>room4.jpg</images>
+  </room>
+</rooms>

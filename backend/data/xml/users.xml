@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>admin1</id>
+    <username>admin</username>
+    <password>********</password>
+    <role>admin</role>
+    <fullName>Chloe Kardasian</fullName>
+    <phone>09123456789</phone>
+    <birthday>1995-03-20</birthday>
+    <address>Mati City, Davao Oriental</address>
+    <emergencyContact>John Kardasian</emergencyContact>
+    <accountNumber>ADMIN001</accountNumber>
+    <roomNumber></roomNumber>
+    <monthlyRent></monthlyRent>
+    <dueDate></dueDate>
+    <moveInDate></moveInDate>
+    <createdAt>2024-01-01T00:00:00.000Z</createdAt>
+  </user>
+  <user>
+    <id>user1</id>
+    <username>daniela</username>
+    <password>********</password>
+    <role>tenant</role>
+    <fullName>Daniela</fullName>
+    <phone>01234567890</phone>
+    <birthday></birthday>
+    <address>Mati City</address>
+    <emergencyContact>Chloe</emergencyContact>
+    <accountNumber></accountNumber>
+    <roomNumber>101</roomNumber>
+    <monthlyRent>1200</monthlyRent>
+    <dueDate>6</dueDate>
+    <moveInDate>2026-05-20</moveInDate>
+    <createdAt>2026-05-20T11:21:30.593Z</createdAt>
+  </user>
+  <user>
+    <id>user2</id>
+    <username>mico</username>
+    <password>********</password>
+    <role>tenant</role>
+    <fullName>Mico Jabagat</fullName>
+    <phone>09876543210</phone>
+    <birthday></birthday>
+    <address>Mati City</address>
+    <emergencyContact>Lady Gaga</emergencyContact>
+    <accountNumber></accountNumber>
+    <roomNumber>101</roomNumber>
+    <monthlyRent>1200</monthlyRent>
+    <dueDate>6</dueDate>
+    <moveInDate>2026-05-20</moveInDate>
+    <createdAt>2026-05-20T11:49:55.934Z</createdAt>
+  </user>
+</users>
